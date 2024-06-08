@@ -18,14 +18,11 @@ arr.forEach(ele=>{
     let innerDiv = document.createElement('div');
     innerDiv.style.height = (ele*5+'px');
     innerDiv.style.backgroundColor= `#` + ( Math.random()*0xFFFFFF<<0).toString(16).padStart(6, '0');
-    // innerDiv.style.backgroundColor= 'blue';
-    // innerDiv.style.border="1px white solid"
     innerDiv.style.padding=10+'px';
     innerDiv.style.width="auto";
     innerDiv.setAttribute('id', 'elem' + i);
     i++;
     innerDiv.classList.add("innerDiv");
-    // innerDiv.style.borderColor('black');
     parentDiv.appendChild(innerDiv);
 });
 
@@ -181,10 +178,6 @@ async function insertionsort(arr){
         let a='elem'+i;
         await sleep(50);
         document.getElementById(a).style.border='1px solid black';
-        // Move elements of arr[0..i-1],
-        // that are greater than key, 
-        // to one position ahead of their
-        // current position
         await sleep(100);
         while (j >= 0 && arr[j] > key) {
             if(flag){
@@ -212,8 +205,6 @@ async function mergesort(arr) {
         let temp = []; // temporary array
         let left = low; // starting index of left half of arr
         let right = mid + 1; // starting index of right half of arr
-    
-        // storing elements in the temporary array in a sorted manner
         while (left <= mid && right <= high) {
             if (arr[left] <= arr[right]) {
                 temp.push(arr[left]);
@@ -224,32 +215,29 @@ async function mergesort(arr) {
             }
         }
     
-        // if elements on the left half are still left
         while (left <= mid) {
             temp.push(arr[left]);
             left++;
         }
-    
-        // if elements on the right half are still left
+
         while (right <= high) {
             temp.push(arr[right]);
             right++;
         }
     
-        // transferring all elements from temporary to arr
         for (let i = low; i <= high; i++) {
             arr[i] = temp[i - low];
             console.log('you have reached here');
-            await colorSwap(i, indexJ); // Ensure colorSwap is defined and works correctly
+            await colorSwap(i, indexJ); 
         }
     }
     
     async function mergeSort(arr, low, high) {
         if (low >= high) return;
         let mid = Math.floor((low + high) / 2);
-        await mergeSort(arr, low, mid); // left half
-        await mergeSort(arr, mid + 1, high); // right half
-        await merge(arr, low, mid, high); // merging sorted halves
+        await mergeSort(arr, low, mid); 
+        await mergeSort(arr, mid + 1, high); 
+        await merge(arr, low, mid, high); 
     }
 }
 async function quicksort(arr, low = 0, high = arr.length - 1) {
@@ -301,14 +289,12 @@ async function colorSwap(i,j){
     let b = 'elem' + (j);
     let e1 = document.getElementById(a);
     let e2 = document.getElementById(b);
-    if (e1 && e2) { // Ensure elements are found before accessing their styles
+    if (e1 && e2) { 
         // Swap colors
         let b1 = e1.style.backgroundColor;
         let b2 = e2.style.backgroundColor;
         e1.style.backgroundColor = b2;
         e2.style.backgroundColor = b1;
-
-        // Swap heights
         let h1 = e1.style.height;
         let h2 = e2.style.height;
         e1.style.height = h2;

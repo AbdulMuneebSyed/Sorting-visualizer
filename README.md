@@ -12,7 +12,7 @@ Sorting Visualizer allows users to see how different sorting algorithms work ste
 
 ## Demo
 
-You can check out the live demo of the Sorting Visualizer [here](https://your-username.github.io/sorting-visualizer/).
+You can check out the live demo of the Sorting Visualizer [here]([https://abdulmuneebsyed.github.io/Sorting-visualizer/]).
 
 ## Usage
 

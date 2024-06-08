@@ -12,13 +12,13 @@ Sorting Visualizer allows users to see how different sorting algorithms work ste
 
 ## Demo
 
-You can check out the live demo of the Sorting Visualizer [here]([https://abdulmuneebsyed.github.io/Sorting-visualizer/]).
+You can check out the live demo of the Sorting Visualizer [here](https://abdulmuneebsyed.github.io/Sorting-visualizer/).
 
 ## Usage
 
 1. Clone the repository:
     ```sh
-    git clone https://github.com/your-username/sorting-visualizer.git
+    git clone https://github.com/abdulmuneebsyed/sorting-visualizer.git
     ```
 2. Open `index.html` in your browser to view the Sorting Visualizer.
 

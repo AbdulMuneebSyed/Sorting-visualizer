@@ -6,8 +6,6 @@ Sorting Visualizer allows users to see how different sorting algorithms work ste
 ## Features
 
 - Visual representation of sorting algorithms
-- Adjustable speed of the visualization
-- Ability to change the size of the array
 - Multiple sorting algorithms implemented
 
 ## Demo
@@ -29,7 +27,7 @@ You can check out the live demo of the Sorting Visualizer [here](https://abdulmu
 - Insertion Sort
 - Merge Sort
 - Quick Sort
-- Heap Sort
+
 
 ## Technologies Used
 

@@ -1,4 +1,4 @@
-let arrsize=window.prompt("Enter the size of the desired array(65<< x << 5)")
+let arrsize=window.prompt("Enter the size of the desired array(5<< x << 65)")
 let flag = true;
 let parentDiv= document.getElementsByClassName('parent')[0];
 let btn=document.getElementsByClassName('butn')[0];

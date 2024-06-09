@@ -1,10 +1,4 @@
-let arr=[];
-let arrsize=30;
-for(let i=0;i<arrsize;i++){
-    let r = Math.floor(Math.random()*100)
-    arr.push(r);
-}
-
+let arrsize=window.prompt("Enter the size of the desired array(65<< x << 5)")
 let flag = true;
 let parentDiv= document.getElementsByClassName('parent')[0];
 let btn=document.getElementsByClassName('butn')[0];
@@ -13,23 +7,48 @@ let selectionBtn=document.getElementsByClassName('sortButton')[1];
 let bubbleBtn=document.getElementsByClassName('sortButton')[0];
 let mergebtn= document.getElementsByClassName('sortButton')[4];
 let quickBtn= document.getElementsByClassName('sortButton')[3];
+let changeArrSize=document.getElementsByClassName('sortButtonprimme')[1];
+let fastSpeed=document.getElementsByClassName('sortButtonprimme')[0];
+let linktext = document.getElementsByClassName('alink')[0];
+let showingspeed= document.getElementsByClassName('showSpeed')[0];
+changeArrSize.addEventListener('mouseover',()=>{
+    linktext.style.color = 'orange';
+});
+changeArrSize.addEventListener('mouseout',()=>{
+    linktext.style.color = 'white';
+})
+let speeding=500;
+let arr=[];
+showingspeed.style.display = 'none';
+showingSpeed(speeding);
+//array input
+for(let i=0;i<arrsize;i++){
+    let r = Math.floor(Math.random()*100)
+    arr.push(r);
+}
 let i=0;
 arr.forEach(ele=>{
     let innerDiv = document.createElement('div');
     innerDiv.style.height = (ele*5+'px');
     innerDiv.style.backgroundColor= `#` + ( Math.random()*0xFFFFFF<<0).toString(16).padStart(6, '0');
+    // innerDiv.style.backgroundColor= 'blue';
+    // innerDiv.style.border="1px white solid"
     innerDiv.style.padding=10+'px';
     innerDiv.style.width="auto";
     innerDiv.setAttribute('id', 'elem' + i);
     i++;
     innerDiv.classList.add("innerDiv");
+    // innerDiv.style.borderColor('black');
     parentDiv.appendChild(innerDiv);
 });
-
 
 const sleep = (time)=>{
     return new Promise(resolve=> setTimeout(resolve,time));
 }
+changeArrSize.addEventListener('click',()=>{
+    speeding=500;
+
+})
 selectionBtn.addEventListener("click",()=>{
     flag = true;
     selectionBtn.style.display = 'none';
@@ -37,19 +56,21 @@ selectionBtn.addEventListener("click",()=>{
     insertionBtn.style.display = 'none';
     quickBtn.style.display = 'none';
     mergebtn.style.display = 'none';
+    showingspeed.style.display = 'flex';
     btn.style.display = 'block';
     selectionSort(arr);
 });
+
 bubbleBtn.addEventListener("click", () => {
-    fflag = true;
+    flag = true;
     selectionBtn.style.display = 'none';
     bubbleBtn.style.display = 'none';
     insertionBtn.style.display = 'none';
     quickBtn.style.display = 'none';
     mergebtn.style.display = 'none';
     btn.style.display = 'block';
-    bubbleSort(arr);
-    // Add the event listener for the start button
+    showingspeed.style.display = 'flex';
+        bubbleSort(arr);
 });
 //bubble sort;
 insertionBtn.addEventListener('click',() => {
@@ -59,6 +80,7 @@ insertionBtn.addEventListener('click',() => {
     insertionBtn.style.display = 'none';
     quickBtn.style.display = 'none';
     mergebtn.style.display = 'none';
+    showingspeed.style.display = 'flex';
     btn.style.display = 'block';
     insertionsort(arr);
 });
@@ -70,8 +92,8 @@ mergebtn.addEventListener('click',()=>{
     insertionBtn.style.display = 'none';
     quickBtn.style.display = 'none';
     mergebtn.style.display = 'none';
+    showingspeed.style.display = 'flex';
     btn.style.display = 'block';
-
     quicksort(arr);
 })
 quickBtn.addEventListener('click',()=>{
@@ -81,6 +103,7 @@ quickBtn.addEventListener('click',()=>{
     insertionBtn.style.display = 'none';
     quickBtn.style.display = 'none';
     mergebtn.style.display = 'none';
+    showingspeed.style.display = 'flex';
     btn.style.display = 'block';
     quicksort(arr);
 });
@@ -91,9 +114,12 @@ btn.addEventListener('click' , ()=>{
         arr[i] = r;
         let innerDiv = document.getElementById('elem'+ i);
         innerDiv.style.height=(arr[i]*5) + 'px';
+        innerDiv.style.border='none';
         innerDiv.style.backgroundColor= `#` + ( Math.random()*0xFFFFFF<<0).toString(16).padStart(6, '0');
     }
-
+    speeding=500;
+    showingspeed.style.display = 'none';
+    showingSpeed(speeding);
     flag = true;
     selectionBtn.style.display = 'block';
     bubbleBtn.style.display = 'block';
@@ -113,18 +139,17 @@ async function bubbleSort(arr){
             if(flag){
                 let a='elem'+j;
                 let b='elem'+(j+1);
-                await sleep(50);
+                await sleep(speeding);
                 document.getElementById(a).style.border='1px solid black';
                 document.getElementById(b).style.border='1px solid black';
             if(arr[j+1]<arr[j]){
-                
+                console.log('iam there');
                 let temp=arr[j];
                 arr[j]=arr[j+1];
                 arr[j+1]=temp;
                 colorSwap(j,j+1);
-                
             }
-            await sleep(50);
+            await sleep(speeding);
             document.getElementById(a).style.border='none';
             document.getElementById(b).style.border='none';
         }
@@ -146,14 +171,14 @@ async function selectionSort(arr){
                 console.log('i= '+ i + ' j= ' + j + ' lenght' + arr.length);
                 let a='elem'+mini;
                 let b='elem'+(j);
-                await sleep(50);
+                await sleep(speeding);
                 document.getElementById(a).style.border='1px solid black';
                 document.getElementById(b).style.border='1px solid black';
                 if(arr[mini]>arr[j]){
                     mini=j;
                 }
             
-                await sleep(50);
+                await sleep(speeding);
                 document.getElementById(a).style.border='none';
                 document.getElementById(b).style.border='none';
             }
@@ -176,9 +201,12 @@ async function insertionsort(arr){
         let key = arr[i];
         let j = i - 1;
         let a='elem'+i;
-        await sleep(50);
         document.getElementById(a).style.border='1px solid black';
-        await sleep(100);
+        // Move elements of arr[0..i-1],
+        // that are greater than key, 
+        // to one position ahead of their
+        // current position
+        await sleep(speeding);
         while (j >= 0 && arr[j] > key) {
             if(flag){
             let b = 'elem'+ j;
@@ -186,7 +214,7 @@ async function insertionsort(arr){
             arr[j + 1] = arr[j];
             colorSwap(j+1,j);    
             j = j - 1;
-            await sleep(100);
+            await sleep(speeding);
             document.getElementById(b).style.border = '1px solid black';
             }
             else {
@@ -198,52 +226,62 @@ async function insertionsort(arr){
     
     }
 }
-async function mergesort(arr) {
-    await mergeSort(arr, 0, arr.length - 1);
-    
-    async function merge(arr, low, mid, high) {
-        let temp = []; // temporary array
-        let left = low; // starting index of left half of arr
-        let right = mid + 1; // starting index of right half of arr
-        while (left <= mid && right <= high) {
-            if (arr[left] <= arr[right]) {
-                temp.push(arr[left]);
-                left++;
+async function mergeSort(arr, colorswap) {
+    let temp = Array(arr.length);
+    async function merge(leftStart, leftEnd, rightStart, rightEnd) {
+        let i = leftStart;
+        let j = rightStart;
+        let k = leftStart;
+
+        while (i <= leftEnd && j <= rightEnd) {
+            if (arr[i] <= arr[j]) {
+                temp[k] = arr[i];
+                i++;
             } else {
-                temp.push(arr[right]);
-                right++;
+                temp[k] = arr[j];
+                j++;
             }
+            k++;
         }
-    
-        while (left <= mid) {
-            temp.push(arr[left]);
-            left++;
+        // 
+        // Copy remaining elements from left subarray, if any
+        while (i <= leftEnd) {
+            temp[k] = arr[i];
+            i++;
+            k++;
         }
 
-        while (right <= high) {
-            temp.push(arr[right]);
-            right++;
+        // Copy remaining elements from right subarray, if any
+        while (j <= rightEnd) {
+            temp[k] = arr[j];
+            j++;
+            k++;
         }
-    
-        for (let i = low; i <= high; i++) {
-            arr[i] = temp[i - low];
-            console.log('you have reached here');
-            await colorSwap(i, indexJ); 
+
+        // Copy the merged elements back into the original array
+         for (let idx = leftStart; idx <= rightEnd; idx++) {
+            arr[idx] = temp[idx];
+            // Call the colorswap function with the current index
+            await elemswap(idx,temp);
+            await sleep(500);
         }
     }
-    
-    async function mergeSort(arr, low, high) {
-        if (low >= high) return;
-        let mid = Math.floor((low + high) / 2);
-        await mergeSort(arr, low, mid); 
-        await mergeSort(arr, mid + 1, high); 
-        await merge(arr, low, mid, high); 
+    async function mergeSortRecursive(left, right) {
+        if (left < right) {
+            let middle = Math.floor((left + right) / 2);
+            mergeSortRecursive(left, middle);
+            mergeSortRecursive(middle + 1, right);
+            merge(left, middle, middle + 1, right);
+        }
     }
+
+    mergeSortRecursive(0, arr.length - 1);
+    print(arr);
 }
 async function quicksort(arr, low = 0, high = arr.length - 1) {
     if (low < high) {
         const pi = await partition(arr, low, high);
-        await sleep(100);
+        await sleep(speeding);
         await quicksort(arr, low, pi - 1);
         await quicksort(arr, pi + 1, high);
     }
@@ -259,7 +297,7 @@ async function partition(arr, low, high) {
     for (let j = low; j < high; j++) {
         
         let b='elem'+(j);
-        await sleep(100);
+        await sleep(speeding);
         document.getElementById(b).style.border='1px solid black';
         if (arr[j] < pivot) {
             i++;
@@ -289,12 +327,14 @@ async function colorSwap(i,j){
     let b = 'elem' + (j);
     let e1 = document.getElementById(a);
     let e2 = document.getElementById(b);
-    if (e1 && e2) { 
+    if (e1 && e2) { // Ensure elements are found before accessing their styles
         // Swap colors
         let b1 = e1.style.backgroundColor;
         let b2 = e2.style.backgroundColor;
         e1.style.backgroundColor = b2;
         e2.style.backgroundColor = b1;
+
+        // Swap heights
         let h1 = e1.style.height;
         let h2 = e2.style.height;
         e1.style.height = h2;
@@ -303,10 +343,33 @@ async function colorSwap(i,j){
         // Pause for visualization
         // e1.style.borderColor = 'red';
         // e2.style.borderColor = 'red';
-        await sleep(100);
+        await sleep(speeding);
         e1.style.borderColor = 'black';
         e2.style.borderColor = 'black';
     } else {
         console.error(`Element not found: ${a} or ${b}`);
     }
+}
+async function elemswap(i,temp){
+    
+    let a = ('elem' + i);
+    let e1= document.getElementById(a);
+    e1.style.height = (temp[i] * 6) + 'px';
+}
+async function print(arr){
+    await arr.forEach(ele=>{
+        console.log( ele + ' ');
+    })
+}
+fastSpeed.addEventListener("click",()=>{
+    if(speeding>0){
+    speeding-=100;
+    showingSpeed(speeding);
+    }
+    else{
+        showingspeed.textContent = `Current Speed: ${speeding}ms : this is the lass limit`; 
+    }
+})
+async function showingSpeed(speeding){
+    showingspeed.textContent = `Current Speed: ${speeding}ms`;
 }

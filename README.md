@@ -7,7 +7,9 @@ Sorting Visualizer allows users to see how different sorting algorithms work ste
 
 - Visual representation of sorting algorithms
 - Multiple sorting algorithms implemented
-
+- Input array size
+- set speed for the visuals
+  
 ## Demo
 
 You can check out the live demo of the Sorting Visualizer [here](https://abdulmuneebsyed.github.io/Sorting-visualizer/).

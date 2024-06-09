@@ -3,7 +3,7 @@
 
 Sorting Visualizer allows users to see how different sorting algorithms work step-by-step. This tool is useful for both educational purposes and for anyone interested in the inner workings of sorting algorithms.
 
-![Sorting Visualizer](https://ibb.co/25KBsMx)
+<a href="https://ibb.co/25KBsMx"><img src="https://i.ibb.co/nRkSn19/Screenshot-118.png" alt="Screenshot-118" border="0"></a>
 
 ## Features
 
